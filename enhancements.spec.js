@@ -32,8 +32,15 @@ describe("enhancement library", () => {
     });
   });
   describe("repair() method", () => {
-    test("should take in an object and return a object with failed enhancement", () => {
-      expect(enhancer.repair()).toBe(null);
+    test("should take in an object and return a object with durability restored to 100", () => {
+      const actual = enhancer.repair({ name: "Shield", durability: 0 });
+      const actual99 = enhancer.repair({ name: "Shield", durability: 99 });
+      expect(actual.durability).toBe(100);
+      expect(actual99.durability).toBe(100);
+    });
+    it("should throw an error if it is already at 100 durability", () => {
+      const actual100 = { name: "Shield", durability: 100 };
+      expect(() => enhancer.repair(actual100)).toThrow();
     });
   });
 });

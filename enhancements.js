@@ -24,5 +24,9 @@ function fail(item) {
 }
 
 function repair(item) {
-  return null;
+  if (item.durability === 100) {
+    throw new Error("Already in excellent condition, no need to repair");
+  }
+  return { ...item, durability: 100 };
+  // return null;
 }
