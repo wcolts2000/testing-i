@@ -77,6 +77,10 @@ describe("enhancement library", () => {
       const below14 = { durability: 90, enhancement: 13 };
       expect(enhancer.fail(below14).durability).toBe(85);
     });
+    test("it should decrease durability of item by 10 if enhancement is 14 or over", () => {
+      const over14 = { durability: 90, enhancement: 14 };
+      expect(enhancer.fail(over14).durability).toBe(80);
+    });
   });
 
   // REPAIR
