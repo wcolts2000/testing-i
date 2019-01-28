@@ -77,7 +77,7 @@ function succeed(item) {
 }
 
 function fail(item) {
-  if (0 > item.enhancement < 14) {
+  if (item.enhancement < 14) {
     return { ...item, durability: item.durability - 5 };
   } else return true;
 }
