@@ -6,12 +6,14 @@ describe("enhancement library", () => {
       const item = {
         actualName: "Lambda Shield",
         name: "[+8] Lambda Shield",
+        type: "armor",
         durability: 90,
         enhancement: 8
       };
       const expected = {
         actualName: "Lambda Shield",
         name: "[+9] Lambda Shield",
+        type: "armor",
         durability: 90,
         enhancement: 9
       };
@@ -21,7 +23,7 @@ describe("enhancement library", () => {
       expect(actual).toEqual(expected);
       expect(actual.enhancement).toBe(9);
       expect(actual.name).toBe("[+9] Lambda Shield");
-      // expect(enhancer.succeed()).toBe(null);
+      expect(enhancer.succeed()).toBe(null);
     });
   });
   describe("fail() method", () => {
