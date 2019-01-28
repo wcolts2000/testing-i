@@ -5,7 +5,13 @@ module.exports = {
 };
 
 function succeed(item) {
-  return null;
+  if (!item) return null;
+  return {
+    actualName: item.actualName,
+    name: `[+${item.enhancement + 1}] ${item.actualName}`,
+    durability: item.durability,
+    enhancement: item.enhancement + 1
+  };
 }
 
 function fail(item) {

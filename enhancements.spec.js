@@ -1,27 +1,27 @@
 const enhancer = require("./enhancements");
 
 describe("enhancement library", () => {
-  describe("succeed() method", () => {
+  describe("succeed(item) method", () => {
     test("should take in an object and return an enhanced object", () => {
-      //   const item = {
-      //     originalName: "Lambda Shield",
-      //     name: "[+8] Lambda Shield",
-      //     durability: 90,
-      //     enhancement: 8
-      //   };
-      //   const expected = {
-      //     originalName: "Lambda Shield",
-      //     name: "[+9] Lambda Shield",
-      //     durability: 90,
-      //     enhancement: 9
-      //   };
+      const item = {
+        actualName: "Lambda Shield",
+        name: "[+8] Lambda Shield",
+        durability: 90,
+        enhancement: 8
+      };
+      const expected = {
+        actualName: "Lambda Shield",
+        name: "[+9] Lambda Shield",
+        durability: 90,
+        enhancement: 9
+      };
 
-      //   const actual = enhancer.succeed(item);
+      const actual = enhancer.succeed(item);
 
-      //   expect(actual).toEqual(expected);
-      //   expect(actual.enhancement).toBe(9);
-      //   expect(actual.name).toBe("[+9] Lambda Shield");
-      expect(enhancer.succeed()).toBe(null);
+      expect(actual).toEqual(expected);
+      expect(actual.enhancement).toBe(9);
+      expect(actual.name).toBe("[+9] Lambda Shield");
+      // expect(enhancer.succeed()).toBe(null);
     });
   });
   describe("fail() method", () => {
