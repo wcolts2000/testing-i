@@ -6,16 +6,73 @@ module.exports = {
 
 function succeed(item) {
   if (!item) return null;
+  if (item.enhancement === "PEN") {
+    throw new Error({ error: "weapon fully enhanced" });
+  }
   if (item.type !== "armor" && item.type !== "weapon") {
     return console.error({ error: "can only enhance weapons and armor" });
   } else {
-    return {
-      actualName: item.actualName,
-      name: `[+${item.enhancement + 1}] ${item.actualName}`,
-      type: item.type,
-      durability: item.durability,
-      enhancement: item.enhancement + 1
-    };
+    if (item.enhancement === 17) {
+      return {
+        actualName: item.actualName,
+        name: `["TRI"] ${item.actualName}`,
+        type: item.type,
+        durability: item.durability,
+        enhancement: item.enhancement + 1
+      };
+    } else if (item.enhancement === 18) {
+      return {
+        actualName: item.actualName,
+        name: `["TET"] ${item.actualName}`,
+        type: item.type,
+        durability: item.durability,
+        enhancement: item.enhancement + 1
+      };
+    } else if (item.enhancement === 19) {
+      return {
+        actualName: item.actualName,
+        name: `["PEN"] ${item.actualName}`,
+        type: item.type,
+        durability: item.durability,
+        enhancement: item.enhancement + 1
+      };
+    }
+    if (item.enhancement === 16) {
+      return {
+        actualName: item.actualName,
+        name: `["DUO"] ${item.actualName}`,
+        type: item.type,
+        durability: item.durability,
+        enhancement: item.enhancement + 1
+      };
+    }
+    if (item.enhancement > 15) {
+      return {
+        actualName: item.actualName,
+        name: `[+${item.enhancement + 1}] ${item.actualName}`,
+        type: item.type,
+        durability: item.durability,
+        enhancement: item.enhancement + 1
+      };
+    }
+
+    if (item.enhancement === 15) {
+      return {
+        actualName: item.actualName,
+        name: `["PRI"] ${item.actualName}`,
+        type: item.type,
+        durability: item.durability,
+        enhancement: item.enhancement + 1
+      };
+    } else {
+      return {
+        actualName: item.actualName,
+        name: `[+${item.enhancement + 1}] ${item.actualName}`,
+        type: item.type,
+        durability: item.durability,
+        enhancement: item.enhancement + 1
+      };
+    }
   }
 }
 

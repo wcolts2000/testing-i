@@ -1,5 +1,6 @@
 const enhancer = require("./enhancements");
 
+// SUCCEED
 describe("enhancement library", () => {
   describe("succeed(item) method", () => {
     test("should take in an object and return an enhanced object", () => {
@@ -23,14 +24,61 @@ describe("enhancement library", () => {
       expect(actual).toEqual(expected);
       expect(actual.enhancement).toBe(9);
       expect(actual.name).toBe("[+9] Lambda Shield");
+    });
+
+    test("if no item passed it should return null", () => {
       expect(enhancer.succeed()).toBe(null);
     });
+
+    test("should return the correct string in the name if enhancement is above 15", () => {
+      const enhance15 = {
+        actualName: "sword",
+        type: "weapon",
+        enhancement: 15
+      };
+      const enhancePRI = {
+        actualName: "sword",
+        type: "weapon",
+        enhancement: 16
+      };
+      const enhanceDUO = {
+        actualName: "sword",
+        type: "weapon",
+        enhancement: 17
+      };
+      const enhanceTRI = {
+        actualName: "sword",
+        type: "weapon",
+        enhancement: 18
+      };
+      const enhanceTET = {
+        actualName: "sword",
+        type: "weapon",
+        enhancement: 19
+      };
+      expect(enhancer.succeed(enhance15).enhancement).toBe(16);
+      expect(enhancer.succeed(enhance15).name).toBe('["PRI"] sword');
+      expect(enhancer.succeed(enhancePRI).enhancement).toBe(17);
+      expect(enhancer.succeed(enhancePRI).name).toEqual('["DUO"] sword');
+      expect(enhancer.succeed(enhanceDUO).name).toBe('["TRI"] sword');
+      expect(enhancer.succeed(enhanceTRI).name).toBe('["TET"] sword');
+      expect(enhancer.succeed(enhanceTET).name).toBe('["PEN"] sword');
+    });
+
+    it('should throw an error if it is at maxed enhancement of "PEN', () => {
+      const actual = { type: "armor", enhancement: "PEN" };
+      expect(() => enhancer.succeed(actual)).toThrow();
+    });
   });
+
+  // FAIL
   describe("fail() method", () => {
     test("should take in an object and return a object with failed enhancement", () => {
       expect(enhancer.fail()).toBe(null);
     });
   });
+
+  // REPAIR
   describe("repair() method", () => {
     test("should take in an object and return a object with durability restored to 100", () => {
       const actual = enhancer.repair({ name: "Shield", durability: 0 });
