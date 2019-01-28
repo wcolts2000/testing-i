@@ -12,7 +12,8 @@ describe("item library", () => {
         actualName: "",
         name: "",
         type: "",
-        enhancement: 100
+        enhancement: 0,
+        durability: 100
       };
       expect(item.item).toMatchObject(itemTemplate);
     });

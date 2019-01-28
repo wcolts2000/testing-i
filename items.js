@@ -3,6 +3,7 @@ module.exports = {
     actualName: "",
     name: "",
     type: "",
-    enhancement: 100
+    enhancement: 0,
+    durability: 100
   }
 };
