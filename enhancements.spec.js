@@ -73,8 +73,9 @@ describe("enhancement library", () => {
 
   // FAIL
   describe("fail() method", () => {
-    test("should take in an object and return a object with failed enhancement", () => {
-      expect(enhancer.fail()).toBe(null);
+    test("it should decrease durability of item by 5 if enhancement is between 0 and 14", () => {
+      const below14 = { durability: 90, enhancement: 13 };
+      expect(enhancer.fail(below14).durability).toBe(85);
     });
   });
 
