@@ -77,6 +77,34 @@ function succeed(item) {
 }
 
 function fail(item) {
+  if (item.enhancement === 17) {
+    return {
+      ...item,
+      enhancement: item.enhancement - 1,
+      name: `["PRI"] ${item.actualName}`
+    };
+  }
+  if (item.enhancement === 18) {
+    return {
+      ...item,
+      enhancement: item.enhancement - 1,
+      name: `["DUO"] ${item.actualName}`
+    };
+  }
+  if (item.enhancement === 19) {
+    return {
+      ...item,
+      enhancement: item.enhancement - 1,
+      name: `["TRI"] ${item.actualName}`
+    };
+  }
+  if (item.enhancement === 20) {
+    return {
+      ...item,
+      enhancement: item.enhancement - 1,
+      name: `["TET"] ${item.actualName}`
+    };
+  }
   if (item.enhancement < 14) {
     return { ...item, durability: item.durability - 5 };
   }

@@ -73,13 +73,43 @@ describe("enhancement library", () => {
 
   // FAIL
   describe("fail() method", () => {
+    const below14 = { durability: 90, enhancement: 13 };
+    const over14 = { durability: 90, enhancement: 14 };
+    const enhanceDUO = {
+      actualName: "sword",
+      type: "weapon",
+      enhancement: 17
+    };
+    const enhanceTRI = {
+      actualName: "sword",
+      type: "weapon",
+      enhancement: 18
+    };
+    const enhanceTET = {
+      actualName: "sword",
+      type: "weapon",
+      enhancement: 19
+    };
+    const enhancePEN = {
+      actualName: "sword",
+      type: "weapon",
+      enhancement: 20
+    };
+
     test("it should decrease durability of item by 5 if enhancement is between 0 and 14", () => {
-      const below14 = { durability: 90, enhancement: 13 };
       expect(enhancer.fail(below14).durability).toBe(85);
     });
+
     test("it should decrease durability of item by 10 if enhancement is 14 or over", () => {
-      const over14 = { durability: 90, enhancement: 14 };
       expect(enhancer.fail(over14).durability).toBe(80);
+    });
+
+    test("if enhancement level is over 16 it should decrease enhancement level by 1 and update name accordingly", () => {
+      expect(enhancer.fail(enhanceDUO).enhancement).toBe(16);
+      expect(enhancer.fail(enhanceDUO).name).toBe('["PRI"] sword');
+      expect(enhancer.fail(enhanceTRI).name).toBe('["DUO"] sword');
+      expect(enhancer.fail(enhanceTET).name).toBe('["TRI"] sword');
+      expect(enhancer.fail(enhancePEN).name).toBe('["TET"] sword');
     });
   });
 
