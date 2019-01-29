@@ -116,6 +116,10 @@ describe("enhancement library", () => {
       const disqualified = { enhancement: 14, durability: 24 };
       expect(() => enhancer.fail(disqualified).toThrow());
     });
+    it("if item enhancement level is equal to or over 15, can't enhance if durability is below 10", () => {
+      const disqualified = { enhancement: 15, durability: 9 };
+      expect(() => enhancer.fail(disqualified).toThrow());
+    });
   });
 
   // REPAIR

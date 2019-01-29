@@ -37,7 +37,10 @@ function succeed(item) {
 
 function fail(item) {
   if (item.enhancement < 15 && item.durability < 25) {
-    return;
+    throw new Error("must repair before you can enhance");
+  }
+  if (item.enhancement >= 15 && item.durability < 10) {
+    throw new Error("must repair before you can enhance");
   }
   if (item.enhancement === 17) {
     return {
@@ -80,5 +83,4 @@ function repair(item) {
     throw new Error("Already in excellent condition, no need to repair");
   }
   return { ...item, durability: 100 };
-  // return null;
 }
