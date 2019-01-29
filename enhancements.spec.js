@@ -111,6 +111,11 @@ describe("enhancement library", () => {
       expect(enhancer.fail(enhanceTET).name).toBe('["TRI"] sword');
       expect(enhancer.fail(enhancePEN).name).toBe('["TET"] sword');
     });
+
+    it("if item enhancement level is lower than 15, can't enhance if durability is below 25", () => {
+      const disqualified = { enhancement: 14, durability: 24 };
+      expect(() => enhancer.fail(disqualified).toThrow());
+    });
   });
 
   // REPAIR
@@ -121,9 +126,9 @@ describe("enhancement library", () => {
       expect(actual.durability).toBe(100);
       expect(actual99.durability).toBe(100);
     });
-    it("should throw an error if it is already at 100 durability", () => {
-      const actual100 = { name: "Shield", durability: 100 };
-      expect(() => enhancer.repair(actual100)).toThrow();
-    });
+  });
+  it("should throw an error if it is already at 100 durability", () => {
+    const actual100 = { name: "Shield", durability: 100 };
+    expect(() => enhancer.repair(actual100)).toThrow();
   });
 });
